@@ -1,342 +1,230 @@
-Project Nexus Documentation — ALX ProDev Backend Engineering
+E-Commerce Backend – ProDev BE
 
-Welcome to Project Nexus, a central knowledge hub documenting major concepts, tools, lessons, and practical experiences gained throughout the ALX ProDev Backend Engineering Program.
+A production-ready backend system built with Django, PostgreSQL, and JWT Authentication.
+This project simulates a real-world backend engineering environment focused on performance, scalability, and API design.
 
-This repository serves as a structured reference for backend concepts, best practices, real-world problem-solving, DevOps essentials, and collaboration between Backend and Frontend engineers.
+🚀 Overview
 
-📚 Table of Contents
+This backend powers an e-commerce product catalog system with features such as:
 
-Project Overview
+Secure JWT-powered user authentication
 
-Objectives
+CRUD operations for products and categories
 
-Technologies Covered
+Efficient filtering, sorting, and pagination
 
-Core Backend Concepts
+Well-structured API documentation (Swagger/OpenAPI)
 
-Major Learnings
+Optimized relational database schema with indexing
 
-Challenges & Solutions
+It mimics real workplace expectations for backend developers—clean architecture, version control discipline, and production-grade API design.
 
-Best Practices & Takeaways
+🎯 Project Goals
+✔ 1. CRUD APIs
 
-Collaboration Guidelines
+Products
 
-Repository Structure
+Categories
 
-How to Contribute
+User accounts (Sign up, Login, Profile)
 
-📌 Project Overview
+✔ 2. Advanced API Features
 
-Project Nexus is a comprehensive documentation project summarizing everything learned during the ALX ProDev Backend Engineering track. It is designed to:
+Filtering (e.g. category, price range)
 
-Consolidate your learning journey
+Sorting (price, date)
 
-Serve as a revision tool
+Pagination (limit/offset or DRF pagination)
 
-Provide clarity on backend engineering concepts
+Keyword search
 
-Prepare you for real-world backend challenges
+✔ 3. Database Optimization
 
-Support collaboration with frontend developers
+Effective schema design
 
-This repository is not a codebase—it is a manual, reference guide, and knowledge center.
+Query optimization
 
-🎯 Objectives
+Indexing for high-performance lookups
 
-The main objectives of this project are to:
+🛠 Technologies Used
+Technology	Purpose
+Django	Backend framework
+Django REST Framework (DRF)	API development
+PostgreSQL	Relational database
+JWT (SimpleJWT)	Authentication
+Swagger / drf-yasg	API documentation
+PythonAnywhere / Render	Deployment
+⭐ Key Features
+🔐 1. User Authentication (JWT)
 
-✔ Document key backend engineering concepts
-✔ Explain complex tools in simple, approachable language
-✔ Capture real-world issues and their solutions
-✔ Demonstrate understanding of backend architecture
-✔ Encourage collaboration between backend & frontend learners
-✔ Serve as a portfolio-ready resource for future employers
+Registration
 
-🔧 Technologies Covered
+Login
 
-Throughout the ProDev Backend Engineering program, you gain exposure to:
+Token refresh
 
-Programming Language
+Protected endpoints
 
-Python
+📦 2. Product & Category Management
 
-Backend Framework
+Admins can create, update, delete
 
-Django
+Public can view product catalog
 
-Django REST Framework (DRF)
+🔎 3. Filtering & Sorting
 
-API Technologies
+Examples:
 
-RESTful APIs
+/products/?category=phones
+/products/?min_price=100&max_price=500
+/products/?sort=price_asc
 
-GraphQL APIs
+📄 4. Pagination
 
-Databases
+Efficient response structure:
 
-PostgreSQL
+{
+  "count": 120,
+  "next": "/products/?page=2",
+  "previous": null,
+  "results": [...]
+}
 
-SQLite
+🧾 5. API Documentation
 
-MySQL (optional exposure)
+Automatically generated at:
 
-Message Queues & Async Processing
+/swagger/
+/redoc/
 
-Celery
+🏗 Project Structure
+├── ecommerce/
+│   ├── settings.py
+│   ├── urls.py
+├── products/
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── urls.py
+├── users/
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+├── requirements.txt
+└── README.md
 
-RabbitMQ
+⚙️ Setup Instructions
+1. Clone the Repository
+git clone https://github.com/PhilipTheBackendDeveloper/alx-project-nexus
+cd alx-project-nexus
 
-Redis (as a broker/cache)
+2. Create Virtual Environment
+python -m venv venv
+source venv/bin/activate
 
-Containerization & Deployment
+3. Install Dependencies
+pip install -r requirements.txt
+
+4. Configure Environment Variables
+
+Create .env:
+
+SECRET_KEY=your_secret_key
+DATABASE_NAME=ecommerce
+DATABASE_USER=postgres
+DATABASE_PASSWORD=yourpassword
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+
+5. Run Migrations
+python manage.py migrate
+
+6. Start Server
+python manage.py runserver
+
+🧪 API Endpoints Overview
+Authentication
+Method	Endpoint	Description
+POST	/auth/register/	Create user
+POST	/auth/login/	Login & get JWT
+POST	/auth/refresh/	Refresh token
+Products
+Method	Endpoint	Description
+GET	/products/	List products
+POST	/products/	Create product
+GET	/products/<id>/	Retrieve product
+PUT	/products/<id>/	Update product
+DELETE	/products/<id>/	Delete product
+
+Filters & sorting supported.
+
+Categories
+Method	Endpoint	Description
+GET	/categories/	List categories
+POST	/categories/	Create category
+📘 Documentation
+
+After running the server, visit:
+
+🔹 Swagger UI:
+/swagger/
+
+🔹 ReDoc:
+/redoc/
+
+📤 Deployment
+
+The API can be deployed on:
+
+PythonAnywhere
+
+Render
+
+Railway
+
+AWS EC2
 
 Docker
 
-CI/CD Pipelines (GitHub Actions, GitLab CI)
+Environment variables must be set appropriately for production.
 
-Cloud Deployment Concepts (AWS basics)
+📝 Git Commit Workflow (Used in This Project)
+feat: set up Django project with PostgreSQL
+feat: implement user authentication with JWT
+feat: add product CRUD APIs
+feat: add filtering, sorting, pagination
+feat: integrate Swagger documentation
+perf: optimize queries with indexing
+docs: write full README and API instructions
 
-Security Concepts
+🧠 Evaluation Criteria
+✔ Functionality
 
-JWT Authentication
+All CRUD operations
 
-Encryption & Hashing
+Proper filtering & pagination
 
-CSRF, CORS
+Secure authentication
 
-Web Security Best Practices
+✔ Code Quality
 
-🧠 Core Backend Concepts
+Clean structure + reusable components
 
-Below are the primary concepts covered in the program that every backend engineer must understand:
+Following Django best practices
 
-1. RESTful Architecture
+Documented codebase
 
-HTTP methods (GET, POST, PUT, DELETE, PATCH)
+✔ User Experience
 
-Status codes
+Easily navigable API documentation
 
-Serializers & Pagination
+✔ Version Control
 
-Versioning
+Clear commit messages
 
-Request/Response cycles
+Organized repo structure
 
-2. GraphQL
+👨‍💻 Author
 
-Queries
-
-Mutations
-
-Resolvers
-
-Benefits over REST: efficiency, flexibility
-
-3. Database Design
-
-ER diagrams
-
-Relationships (One-To-One, One-To-Many, Many-To-Many)
-
-Normalization
-
-Indexing
-
-4. Authentication & Authorization
-
-JWT tokens
-
-Sessions
-
-Permission classes
-
-User roles
-
-5. Asynchronous Task Handling
-
-Background jobs
-
-Task scheduling
-
-Queue systems
-
-Retries & monitoring
-
-6. Caching Strategies
-
-Memory-based caching
-
-Redis caching
-
-API caching strategies
-
-Cache invalidation
-
-7. CI/CD & DevOps
-
-Automated testing
-
-Deployment pipelines
-
-Docker images
-
-Container orchestration basics
-
-🏗 Major Learnings
-✔ Building Scalable Backend APIs
-
-Learned how to structure large Django/DRF applications that scale cleanly as features grow.
-
-✔ Working with Databases Effectively
-
-Learned migrations, schema modeling, indexing, and efficient queries.
-
-✔ Handling Authentication & Security
-
-Implemented JWT authentication, user access controls, and secured API endpoints.
-
-✔ Implementing Background Tasks
-
-Used Celery and RabbitMQ to handle long-running tasks (emails, cron jobs, notifications).
-
-✔ Deploying Applications
-
-Containerized applications using Docker and understood CI/CD pipelines.
-
-✔ Writing Clean, Maintainable Code
-
-Followed industry best practices, including:
-
-DRY (Don’t Repeat Yourself)
-
-SOLID principles
-
-Modular code organization
-
-✔ Real Project Collaboration
-
-Worked with frontend learners to integrate APIs into real-world systems.
-
-🛠 Challenges & Solutions
-1. Challenge: Managing Large Codebases
-
-Solution: Learned to break code into apps/modules with clear responsibilities.
-
-2. Challenge: Debugging API Failures
-
-Solution: Used DRF browsable API, logs, and tools like Postman and Swagger.
-
-3. Challenge: Handling Slow Processes
-
-Solution: Implemented Celery to offload tasks like sending emails and generating reports.
-
-4. Challenge: Database Bottlenecks
-
-Solution: Used indexing, select_related, and prefetch_related to optimize queries.
-
-5. Challenge: Deployment Issues
-
-Solution: Dockerized applications for consistent environments and used CI pipelines.
-
-🌟 Best Practices & Takeaways
-Programming
-
-Write readable, well-commented code
-
-Use linting/formatting tools
-
-Follow PEP8 Python standards
-
-Backend Architecture
-
-Keep business logic inside services, not views
-
-Avoid fat models or massive views
-
-Use modular design
-
-API Design
-
-Keep endpoints predictable
-
-Use proper HTTP status codes
-
-Document APIs using Swagger/OpenAPI
-
-Security
-
-Never store passwords in plain text
-
-Use environment variables
-
-Enable HTTPS in production
-
-Validate all input
-
-Collaboration
-
-Communicate early with the frontend team
-
-Test APIs using real frontend workflows
-
-Maintain clear API documentation
-
-🤝 Collaboration Guidelines
-Collaborate with:
-
-ProDev Backend learners
-
-ProDev Frontend learners (they need your API!)
-
-Where?
-
-💬 Discord Channel: #ProDevProjectNexus
-Use it to:
-
-Ask questions
-
-Share progress
-
-Get feedback
-
-Work on joint features
-
-Tips:
-
-Communicate your chosen final project within the first week
-
-Form sub-teams with learners building similar apps
-
-🗂 Repository Structure
-alx-project-nexus/
-│
-├── README.md               → Main documentation
-├── backend-concepts/       → Subfolder for core notes
-├── api-design/             → REST & GraphQL notes
-├── database-design/        → Notes, diagrams
-├── devops/                 → Docker & CI/CD materials
-├── challenges/             → Real-world challenges + solutions
-└── best-practices/         → Backend engineering best practices
-
-How to Contribute
-
-Contributions are welcome!
-
-Steps:
-
-Fork the repo
-
-Create a new branch
-
-Add your notes or improvements
-
-Commit with clear messages
-
-Submit a pull request
-
-Conclusion
-
-The ProDev Backend program provides the foundation for becoming a world-class backend engineer. Project Nexus captures that journey—your lessons, your growth, your technical foundation.
-
-This repository will continue to evolve as skills grow and new backend technologies are mastered.
+Philip Odame Ayesu
+Backend Developer
